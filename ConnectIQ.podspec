@@ -9,4 +9,6 @@ Pod::Spec.new do |s|
     s.source           = { :http => "https://developer.garmin.com/downloads/connect-iq/sdks/connectiq-mobile-sdk-ios-#{s.version}.zip", :type => "zip" }
     s.vendored_frameworks = "#{s.name}.xcframework"
     s.compiler_flags = "–ObjC"
+    # ConnectIQ does not support arm64 simulators.
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
